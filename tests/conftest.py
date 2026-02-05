@@ -16,9 +16,9 @@ from app.main import app
 @pytest.fixture
 def client() -> TestClient:
     """
-    Fixture que retorna um TestClient para testar a API.
+    Fixture that returns a TestClient to test the API.
 
     Returns:
-        TestClient: Cliente de teste do FastAPI.
+        TestClient: FastAPI test client.
     """
     return TestClient(app)

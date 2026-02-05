@@ -22,7 +22,15 @@ from .core import (
     setup_logging,
     validation_exception_handler,
 )
-from .routers import health_router
+from .db import Base, engine
+from .db.ensure_db import ensure_database_exists
+from .routers import (
+    agent_router,
+    health_router,
+    prompt_router,
+    role_router,
+    user_router,
+)
 
 logger = get_logger(__name__)
 
@@ -41,6 +49,9 @@ async def lifespan(app: FastAPI):  # noqa: RUF029
     setup_logging()
     logger.info(f"Starting {settings.APP_NAME!s} v{settings.APP_VERSION!s}")
     logger.info(f"Debug mode: {settings.DEBUG!s}")
+    ensure_database_exists(settings.DATABASE_URL)
+    Base.metadata.create_all(bind=engine)
+    logger.info("Database tables created or already exist")
     yield
     logger.info("Shutting down...")
 
@@ -68,6 +79,10 @@ app.add_exception_handler(Exception, general_exception_handler)
 
 # Include routers
 app.include_router(health_router)
+app.include_router(agent_router)
+app.include_router(prompt_router)
+app.include_router(role_router)
+app.include_router(user_router)
 
 
 @app.get("/")
