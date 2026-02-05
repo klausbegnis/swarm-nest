@@ -1,9 +1,9 @@
 [project]
-name = "fast-api-template"  # TODO: Change to your project name
+name = "swarm-nest"
 version = "0.1.0"
-description = "Add your description here"  # TODO: Add your project description
+description = "swarm-nest - FastAPI application"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.120.2",
     "pydantic-settings>=2.11.0",
@@ -13,7 +13,7 @@ dependencies = [
 
 [tool.ruff]
 line-length = 80
-target-version = "py314"
+target-version = "py313"
 
 
 [tool.ruff.lint]
@@ -59,7 +59,7 @@ exclude = ["**/__init__.py", "src/legacy/**", "**/legacy/**", "notebooks/**"]
 combine-as-imports = true
 force-sort-within-sections = true
 split-on-trailing-comma = true
-known-first-party = ["fast_api_template"]  # TODO: Update to match your project name
+known-first-party = ["swarm_nest"]  # TODO: Update to match your project name
 
 [tool.ruff.format]
 quote-style = "double"
@@ -68,7 +68,7 @@ line-ending = "lf"
 preview = false
 
 [tool.mypy]
-python_version = "3.14"
+python_version = "3.13"
 check_untyped_defs = true
 disallow_untyped_defs = true
 strict_optional = true

@@ -51,5 +51,5 @@ scripts/
 
 ## Copyright
 
-Copyright (c) 2025. All rights reserved.
+Copyright (c) 2025 Swarm Nest. See LICENSE for details.
 

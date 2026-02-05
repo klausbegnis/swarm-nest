@@ -1,10 +1,10 @@
 """
 File: __init__.py
-Project: replace with your project name
-Created: Wednesday, 29th October 2025 4:14:35 pm
-Author: replace with your name
+Project: swarm-nest
+Created: Thursday, 05th February 2026
+Author: Klaus Begnis
 
-Copyright (c) 2025 replace with your company. All rights reserved.
+Copyright (c) 2025 Swarm Nest. See LICENSE for details.
 """
 
 from .base import ErrorResponse, PaginatedResponse, SuccessResponse
