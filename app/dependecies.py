@@ -15,6 +15,7 @@ from sqlalchemy.orm import Session
 
 from app.db.session import session_context
 from app.services.database_service import DatabaseService
+from app.services.tool_provider import ToolProvider
 
 
 def get_dependency(request: Request) -> Any:
@@ -37,6 +38,11 @@ def get_db() -> Generator[Session]:
         yield db
 
 
+def get_tool_provider() -> ToolProvider:
+    """Provides ToolProvider."""
+    return ToolProvider()
+
+
 def get_database_service(
     db: Annotated[Session, Depends(get_db)],
 ) -> DatabaseService:
@@ -45,3 +51,4 @@ def get_database_service(
 
 
 DatabaseServiceDep = Annotated[DatabaseService, Depends(get_database_service)]
+ToolProviderDep = Annotated[ToolProvider, Depends(get_tool_provider)]

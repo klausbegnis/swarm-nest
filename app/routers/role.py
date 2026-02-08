@@ -12,8 +12,8 @@ from fastapi import APIRouter, Query, status
 from app.core.exceptions import NotFoundException
 from app.dependecies import DatabaseServiceDep
 from app.schemas.api.base import SuccessResponse
-from app.schemas.db.role import RoleCreate, RoleRead, RoleUpdate
 from app.schemas.db.base import orm_to_schema
+from app.schemas.db.role import RoleCreate, RoleRead, RoleUpdate
 
 router = APIRouter(prefix="/roles", tags=["role"])
 

@@ -8,7 +8,6 @@ Copyright (c) 2025 Swarm Nest. See LICENSE for details.
 """
 
 from fastapi import APIRouter, status
-
 from pydantic import BaseModel
 
 from app.core.exceptions import NotFoundException

@@ -24,6 +24,8 @@ from .core import (
 )
 from .db import Base, engine
 from .db.ensure_db import ensure_database_exists
+from .factories.agent_factory import AgentFactory
+from .factories.structured_output_factory import StructuredOutputFactory
 from .routers import (
     agent_router,
     health_router,
@@ -31,6 +33,7 @@ from .routers import (
     role_router,
     user_router,
 )
+from .services.tool_provider import ToolProvider
 
 logger = get_logger(__name__)
 
@@ -51,6 +54,13 @@ async def lifespan(app: FastAPI):  # noqa: RUF029
     logger.info(f"Debug mode: {settings.DEBUG!s}")
     ensure_database_exists(settings.DATABASE_URL)
     Base.metadata.create_all(bind=engine)
+    logger.info("Starting factories...")
+    structured_output_factory = StructuredOutputFactory()
+    tool_provider = ToolProvider()
+    agent_factory = AgentFactory(tool_provider, structured_output_factory)
+    app.state.agent_factory = agent_factory
+    logger.info("Agent Factory started - loading models from database...")
+    # TODO: Load models from database
     logger.info("Database tables created or already exist")
     yield
     logger.info("Shutting down...")

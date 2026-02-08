@@ -12,6 +12,8 @@ dependencies = [
     "sqlalchemy>=2.0.0",
     "psycopg2-binary>=2.9.0",
     "passlib[bcrypt]>=1.7.4",
+    "langchain>=1.2.9",
+    "langchain-tests>=1.1.4",
 ]
 
 [tool.ruff]

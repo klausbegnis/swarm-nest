@@ -50,7 +50,6 @@ def orm_to_schema[T: BaseModel](orm_instance: Any, schema_class: type[T]) -> T:
         Instance of schema_class with values from orm_instance.
     """
     data = {
-        name: getattr(orm_instance, name)
-        for name in schema_class.model_fields
+        name: getattr(orm_instance, name) for name in schema_class.model_fields
     }
     return schema_class.model_validate(data)

@@ -18,7 +18,7 @@ def ensure_database_exists(database_url: str) -> None:
     for the database name in database_url when missing.
 
     Args:
-        database_url (str): Full SQLAlchemy URL including the target database name.
+        database_url (str): Full SQLAlchemy URL including the target database.
     """
     url = make_url(database_url)
     db_name = url.database
